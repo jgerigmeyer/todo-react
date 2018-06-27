@@ -1,0 +1,16 @@
+# http://eslint.org/docs/rules/
+
+parserOptions:
+  ecmaFeatures:
+    impliedStrict: true
+    jsx: true
+  sourceType: module
+env:
+  browser: true
+  commonjs: true
+  node: false
+plugins:
+  - flowtype-errors
+rules:
+  flowtype-errors/show-errors: 2
+  flowtype-errors/show-warnings: 1
