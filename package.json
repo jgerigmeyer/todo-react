@@ -39,11 +39,12 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "start": "parcel src/index.html",
+    "start": "parcel serve src/index.html --open --no-autoinstall",
     "prettier": "prettier --write *.js .*.js src/js/**/*.js src/sass/**/*.scss",
     "eslint": "eslint *.js .*.js src/js/**/*.js",
     "stylelint": "stylelint src/sass/**/*.scss",
-    "lint": "yarn run prettier; yarn run eslint; yarn run stylelint"
+    "lint": "yarn run prettier; yarn run eslint; yarn run stylelint",
+    "prod": "parcel build src/index.html --out-dir dist/prod/"
   },
   "lint-staged": {
     "*.js": [
