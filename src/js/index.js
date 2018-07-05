@@ -5,19 +5,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 
+import type { Store } from 'redux';
+
 type State = {
   +name: string,
 };
-type Props = {
-  state: State,
-};
 type Action = { type: 'NAME_CHANGED', payload: string };
-type AppProps = {
-  store: {
-    dispatch: Action => Action,
-    getState: () => State,
-  },
-};
+type AppStore = Store<State, Action>;
 
 const initialState: State = {
   name: '',
@@ -31,17 +25,16 @@ const reducer = (state: State = initialState, action: Action): State => {
   return state;
 };
 
-const appStore = createStore(reducer);
+const appStore: AppStore = createStore(reducer);
 
-const Content = ({ state }: Props) => {
-  const { name } = state;
+const Content = ({ name }: { +name: string }) => {
   if (!name) {
     return <p>No name...</p>;
   }
   return <h1>Hello, {name}!</h1>;
 };
 
-class App extends React.Component<AppProps, State> {
+class App extends React.Component<{ store: AppStore }, State> {
   constructor(props) {
     super(props);
     const { store } = props;
@@ -56,22 +49,20 @@ class App extends React.Component<AppProps, State> {
     store.dispatch({ type: 'NAME_CHANGED', payload: name });
   }
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.updateName(e.target[0].value);
+  };
+
   render(): React.Node {
     return (
       <div>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            const name = e.target[0].value;
-            e.target[0].value = '';
-            this.updateName(name);
-          }}
-        >
+        <form onSubmit={this.handleSubmit}>
           <label>What is your name?</label>
           <input type="text" name="name" />
           <button type="submit">Save</button>
         </form>
-        <Content state={this.state} />
+        <Content name={this.state.name} />
       </div>
     );
   }
