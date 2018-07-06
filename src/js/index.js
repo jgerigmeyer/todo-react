@@ -3,6 +3,7 @@
 import 'babel-polyfill';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Button, Input } from '@salesforce/design-system-react';
 import { createStore } from 'redux';
 
 import type { Store } from 'redux';
@@ -58,9 +59,8 @@ class App extends React.Component<{ store: AppStore }, State> {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>What is your name?</label>
-          <input type="text" name="name" />
-          <button type="submit">Save</button>
+          <Input type="text" name="name" label="What is your name?" />
+          <Button type="submit" label="Save" />
         </form>
         <Content name={this.state.name} />
       </div>
