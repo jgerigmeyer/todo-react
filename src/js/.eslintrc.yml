@@ -9,8 +9,3 @@ env:
   browser: true
   commonjs: true
   node: false
-plugins:
-  - flowtype-errors
-rules:
-  flowtype-errors/show-errors: 2
-  flowtype-errors/show-warnings: 1

@@ -1,6 +1,5 @@
 // @flow
 
-import 'babel-polyfill';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button, Input } from '@salesforce/design-system-react';

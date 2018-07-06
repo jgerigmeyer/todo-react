@@ -12,12 +12,21 @@ env:
 plugins:
   - react
   - prettier
+  - flowtype-errors
+  - flowtype
 extends:
   - eslint:recommended
+  - plugin:flowtype/recommended
   - plugin:react/recommended
   - plugin:import/recommended
-  - prettier
+  - plugin:prettier/recommended
+  - prettier/flowtype
+  - prettier/react
 rules:
+  # Flow
+  flowtype-errors/show-errors: 2
+  flowtype-errors/show-warnings: 1
+
   # Prettier
   prettier/prettier:
     - 2
