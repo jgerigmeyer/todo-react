@@ -9,6 +9,14 @@ parserOptions:
 env:
   es6: true
   node: true
+settings:
+  import/resolver:
+    webpack:
+      config:
+        resolve:
+          extensions:
+            - .js
+            - .jsx
 plugins:
   - react
   - prettier

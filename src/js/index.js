@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button, Input } from '@salesforce/design-system-react';
+import Button from '@salesforce/design-system-react/components/button';
+import Input from '@salesforce/design-system-react/components/input';
 import { createStore } from 'redux';
 
 import type { Store } from 'redux';
