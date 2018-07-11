@@ -3,7 +3,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button from '@salesforce/design-system-react/components/button';
+import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 import Input from '@salesforce/design-system-react/components/input';
+import utilitySprite from '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';
 import { createStore } from 'redux';
 
 import type { Store } from 'redux';
@@ -60,7 +62,13 @@ class App extends React.Component<{ store: AppStore }, State> {
       <div>
         <form onSubmit={this.handleSubmit}>
           <Input type="text" name="name" label="What is your name?" />
-          <Button type="submit" label="Save" />
+          <Button
+            type="submit"
+            label="Save"
+            iconCategory="utility"
+            iconName="save"
+            iconPosition="left"
+          />
         </form>
         <Content name={this.state.name} />
       </div>
@@ -70,5 +78,10 @@ class App extends React.Component<{ store: AppStore }, State> {
 
 const el = document.getElementById('app');
 if (el) {
-  ReactDOM.render(<App store={appStore} />, el);
+  ReactDOM.render(
+    <IconSettings utilitySprite={utilitySprite}>
+      <App store={appStore} />
+    </IconSettings>,
+    el,
+  );
 }
