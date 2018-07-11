@@ -9,15 +9,32 @@ parserOptions:
 env:
   es6: true
   node: true
+settings:
+  import/resolver:
+    webpack:
+      config:
+        resolve:
+          extensions:
+            - .js
+            - .jsx
 plugins:
   - react
   - prettier
+  - flowtype-errors
+  - flowtype
 extends:
   - eslint:recommended
+  - plugin:flowtype/recommended
   - plugin:react/recommended
   - plugin:import/recommended
-  - prettier
+  - plugin:prettier/recommended
+  - prettier/flowtype
+  - prettier/react
 rules:
+  # Flow
+  flowtype-errors/show-errors: 2
+  flowtype-errors/show-warnings: 1
+
   # Prettier
   prettier/prettier:
     - 2
@@ -116,7 +133,9 @@ rules:
   func-style: 2
   linebreak-style: 2
   lines-between-class-members: 2
-  max-len: 2
+  max-len:
+    - 2
+    - ignorePattern: '^import .*'
   new-cap:
     - 2
     - capIsNewExceptions:
