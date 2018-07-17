@@ -1,5 +1,5 @@
 # todo-react
-Playground for React, Redux, Flow, Parcel.
+Playground for React, Redux, Flow.
 
 ## Development
 
