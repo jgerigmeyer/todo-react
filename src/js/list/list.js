@@ -5,6 +5,7 @@ import PageHeader from '@salesforce/design-system-react/components/page-header';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
+import ListInput from './input';
 import ListItems from './listItems';
 
 import type { ListItem, ListState } from './reducers';
@@ -31,7 +32,7 @@ const List = ({ items }: { items: Array<ListItem> }) => {
         iconCategory="utility"
         info={info}
       />
-      {/* <ListInput /> */}
+      <ListInput />
       <ListItems items={items} />
     </div>
   );

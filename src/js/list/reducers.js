@@ -15,10 +15,7 @@ export type ListState = {
 
 export const listReducer = (
   state: ListState = {
-    items: [
-      { id: uuid(), text: 'do this', done: true },
-      { id: uuid(), text: 'do that', done: false },
-    ],
+    items: [],
   },
   action: Action,
 ): ListState => {
@@ -30,6 +27,11 @@ export const listReducer = (
           ...state.items,
           { id: uuid(), text: action.payload, done: false },
         ],
+      };
+    case 'TODO_REMOVED':
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload),
       };
     case 'TODO_COMPLETED':
       return {
