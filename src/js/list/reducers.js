@@ -11,11 +11,13 @@ export type ListItem = {
 };
 export type ListState = {
   +items: Array<ListItem>,
+  +showCompleted: boolean,
 };
 
 export const listReducer = (
   state: ListState = {
     items: [],
+    showCompleted: false,
   },
   action: Action,
 ): ListState => {
@@ -52,6 +54,11 @@ export const listReducer = (
           }
           return item;
         }),
+      };
+    case 'SHOW_COMPLETED_TOGGLED':
+      return {
+        ...state,
+        showCompleted: action.payload,
       };
   }
   return state;
