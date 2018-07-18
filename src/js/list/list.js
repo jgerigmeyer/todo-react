@@ -16,18 +16,18 @@ const selectListState = (appState): ListState => appState.list;
 
 const selectShowCompleted = createSelector(
   selectListState,
-  (listState): boolean => listState.showCompleted,
+  (listState: ListState): boolean => listState.showCompleted,
 );
 
 const selectItems = createSelector(
   selectListState,
-  (listState): Array<ListItem> => listState.items,
+  (listState: ListState): Array<ListItem> => listState.items,
 );
 
 const selectVisibleItems = createSelector(
   selectListState,
   selectItems,
-  (listState, items): Array<ListItem> => {
+  (listState: ListState, items: Array<ListItem>): Array<ListItem> => {
     if (listState.showCompleted) {
       return items;
     }
@@ -48,7 +48,7 @@ class Toggle extends React.Component<{
   showCompleted: boolean,
   doToggleShowCompleted: typeof toggleShowCompleted,
 }> {
-  handleChange = (e, { checked }) => {
+  handleChange = (e, { checked }: { checked: boolean }) => {
     this.props.doToggleShowCompleted(checked);
   };
 
@@ -57,8 +57,8 @@ class Toggle extends React.Component<{
       <Checkbox
         labels={{
           label: 'Show completed items',
-          toggleDisabled: false,
-          toggleEnabled: false,
+          toggleDisabled: '',
+          toggleEnabled: '',
         }}
         variant="toggle"
         checked={this.props.showCompleted}

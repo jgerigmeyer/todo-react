@@ -20,7 +20,7 @@ class ListItem extends React.Component<{
   doCompleteToDoItem: typeof completeToDoItem,
   doUncompleteToDoItem: typeof uncompleteToDoItem,
 }> {
-  handleChange = (e, { checked }) => {
+  handleChange = (e, { checked }: { checked: boolean }) => {
     const { id } = this.props.item;
     if (checked) {
       this.props.doCompleteToDoItem(id);
