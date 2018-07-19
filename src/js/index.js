@@ -3,7 +3,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-// $FlowFixMe
 import logger from 'redux-logger';
 import utilitySprite from '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';
 import { Provider } from 'react-redux';
@@ -13,6 +12,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import List from './list/list';
 import { cache, persistMiddleware } from './caching';
 import { listReducer } from './list/reducers';
+
+const App = () => <List />;
 
 cache.getAll().then(data => {
   const appStore = createStore(
@@ -35,5 +36,3 @@ cache.getAll().then(data => {
     );
   }
 });
-
-const App = () => <List />;
